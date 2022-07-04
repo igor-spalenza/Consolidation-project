@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Concurso - Gestão de Concursos";
+}
+
+<div>
+    <h2>Listagem de Concursos</h2>
+
+    <a href="/Concurso/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" />Cadastrar Concurso
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>I.E.</th>
+                <th>Data / Hora</th>
+                <th>Concurso publicado</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var concurso in Model)
+            {
+                <tr id="concurso-@concurso.Id">
+                    <td>@concurso.Id</td>
+                    <td>@concurso.Nome</td>
+                    <td>@concurso.IE</td>
+                    <td>@concurso.DataHoraInicio</td>
+                    <td>@(concurso.Situacao == true ? "Sim" : "Não")</td>
+                    <td>
+                        <a class="btn btn-light" href="/Concurso/Detalhar/@concurso.Id">
+                            <img src="~/Images/view.svg" style="height: 1.8rem;" title="Visualizar cadastro de Concurso" />
+                        </a>
+
+                        <a class="btn btn-info" href="/Concurso/Editar/@concurso.Id">
+                            <img src="~/Images/edit.svg" style="height: 1.8rem;" title="Editar cadastro de Concurso" />
+                        </a>
+
+                        <a class="btn btn-danger" onclick="DeletarConcurso(@concurso.Id, '@concurso.Nome');">
+                            <img src="~/Images/del.svg" style="height: 1.8rem;" title="Excluir cadastro de Concurso" />
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="~/Concurso/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" /> Cadastrar Concurso
+    </a>
+</div>
+
+@*@Scripts.Render("~/bundles/Concurso")*@
+
+<script>
+    function DeletarConcurso(id, nome) {
+        let confirmacao = confirm(`Deseja excluir o '${nome}' dos cadastros de Concurso?`)
+        if (confirmacao) {
+            $.get(`/Concurso/Excluir/${id}`, function () {
+                $(`#concurso-${id}`).remove()
+                alert("Concurso removido com êxito!")
+            }).fail(function () {
+                alert("Houve um problema e não foi possível excluir o Concurso")
+            })
+        }
+    }
+
+</script>

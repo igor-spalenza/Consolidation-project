@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>L</name>
+    </assembly>
+    <members>
+        <member name="T:LLibrary.L">
+            <summary>
+            Logs in a log file the given information.
+            </summary>
+        </member>
+        <member name="M:LLibrary.L.#ctor(System.Boolean,System.Nullable{System.TimeSpan},System.String,System.String,System.String[])">
+            <summary>
+            Constructs the logger using the given configuration.
+            </summary>
+            <param name="useUtcTime">True to use UTC time rather than local time</param>
+            <param name="deleteOldFiles">
+            If other than null it sets to delete any file in the log folder that is older than the specified time
+            </param>
+            <param name="dateTimeFormat">Format string to use when calling DateTime.Format</param>
+            <param name="directory">
+            Directory where to create the log files, null to use a local "logs" directory
+            </param>
+            <param name="enabledLabels">
+            Labels enabled to be logged by the library, an attempt to log with a label that is not enabled is ignored
+            (no error is raised), null or empty enables all labels
+            </param>
+        </member>
+        <member name="M:LLibrary.L.Log(System.Enum,System.String)">
+            <summary>
+            Logs the given information.
+            </summary>
+            <param name="label">Label to use when logging</param>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Log(System.String,System.Object)">
+            <summary>
+            Formats the given information and logs it.
+            </summary>
+            <param name="label">Label to use when logging</param>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Debug(System.Object)">
+            <summary>
+            Logs the given information with DEBUG label.
+            </summary>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Info(System.Object)">
+            <summary>
+            Logs the given information with INFO label.
+            </summary>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Warn(System.Object)">
+            <summary>
+            Logs the given information with WARN label.
+            </summary>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Error(System.Object)">
+            <summary>
+            Logs the given information with ERROR label.
+            </summary>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Fatal(System.Object)">
+            <summary>
+            Logs the given information with FATAL label.
+            </summary>
+            <param name="content">A string with a message or an object to call ToString() on it</param>
+        </member>
+        <member name="M:LLibrary.L.Dispose">
+            <summary>
+            Disposes the file writer and the directory cleaner used by this instance.
+            </summary>
+        </member>
+    </members>
+</doc>
