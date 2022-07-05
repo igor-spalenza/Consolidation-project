@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Pessoa - Gestão de Concursos";
+}
+
+<div>
+    <h2>Listagem de Pessoas</h2>
+
+    <a href="/Pessoa/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" />Cadastrar Pessoa
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var pessoa in Model)
+            {
+                <tr id="pessoa-@pessoa.Id">
+                    <td>@pessoa.Id</td>
+                    <td>@pessoa.Nome</td>
+                    <td>@pessoa.DataNascimento.ToString("dd/MM/yyyy")</td>
+                    <td>@pessoa.CPF</td>
+                    <td>@pessoa.Email</td>
+                    <td>@pessoa.Telefone</td>
+                    <td>
+                        <a class="btn btn-light" href="/Pessoa/Detalhar/@pessoa.Id">
+                            <img src="~/Images/view.svg" style="height: 1.8rem;" title="Visualizar cadastro de Pessoa" />
+                        </a>
+
+                        <a class="btn btn-info" href="/Pessoa/Editar/@pessoa.Id">
+                            <img src="~/Images/edit.svg" style="height: 1.8rem;" title="Editar cadastro de Pessoa" />
+                        </a>
+
+                        <a class="btn btn-danger" onclick="DeletarPessoa(@pessoa.Id, '@pessoa.Nome');">
+                            <img src="~/Images/del.svg" style="height: 1.8rem;" title="Excluir cadastro de Pessoa" />
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Pessoa/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" />Cadastrar Pessoa
+    </a>
+</div>
+
+@Scripts.Render("~/bundles/Pessoa")
+@Scripts.Render("~/bundles/jquery")

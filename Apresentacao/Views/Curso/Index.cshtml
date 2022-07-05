@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Curso - Gestão de Cursos";
+}
+
+<div>
+    <h2>Listagem de Cursos</h2>
+
+    <a href="/Curso/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" />Cadastrar Curso
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Carga Horária</th>
+                <th>Data de Cadastro</th>
+                <th>Concurso</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var curso in Model)
+            {
+                <tr id="curso-@curso.Id">
+                    <td>@curso.Id</td>
+                    <td>@curso.Nome</td>
+                    <td>@curso.CargaHoraria</td>
+                    <td>@curso.DataCadastro</td>
+                    <td>@curso.ConcursoId + @curso.Concurso.Nome</td>
+                    <td>
+                        <a class="btn btn-light" href="/Curso/Detalhar/@curso.Id">
+                            <img src="~/Images/view.svg" style="height: 1.8rem;" title="Visualizar cadastro de Curso" />
+                        </a>
+
+                        <a class="btn btn-info" href="/Curso/Editar/@curso.Id">
+                            <img src="~/Images/edit.svg" style="height: 1.8rem;" title="Editar cadastro de Curso" />
+                        </a>
+
+                        <a class="btn btn-danger" onclick="DeletarCurso(@curso.Id, '@curso.Nome');">
+                            <img src="~/Images/del.svg" style="height: 1.8rem;" title="Excluir cadastro de Curso" />
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Curso/Cadastrar" class="btn btn-primary">
+        <img src="~/Images/add.png" style="height: 1.6rem;" />Cadastrar Curso
+    </a>
+
+</div>
+
+
+<script src="~/Scripts/Curso/Curso.js"></script>

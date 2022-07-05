@@ -1,0 +1,66 @@
+﻿@model CRM.Produto.Consolidacao.Dominio.Entidades.Curso
+
+@{
+    ViewBag.Title = "Cadastro de Curso";
+}
+
+<h2>Detalhar</h2>
+
+<div>
+    <h4>Curso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CargaHoraria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CargaHoraria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcursoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcursoId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar cadastro", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a listagem", "Index")
+</p>

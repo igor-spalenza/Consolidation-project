@@ -1,0 +1,94 @@
+﻿@model CRM.Produto.Consolidacao.Dominio.Entidades.Curso
+
+@{
+    ViewBag.Title = "Cadastrar Curso - Gestão de Concursos";
+}
+
+<h2>Cadastrar</h2>
+
+<form action="/Curso/Inserir" method="post">
+
+    @Html.AntiForgeryToken()
+
+    @if (Model != null)
+    {
+        <input type="hidden" name="id" value="@Model.Id" />
+    }
+
+
+    <div class="form-horizontal">
+        <h4>Curso</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Capacidade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Capacidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Capacidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CargaHoraria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CargaHoraria, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CargaHoraria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DataCadastro, "{0:yyyy-MM-ddTHH:mm:ss}", new { @readonly = "readonly", @class = "form-control", type = "datetime-local" })
+                @Html.ValidationMessageFor(model => model.DataCadastro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="concursos">Escolha o Concurso deste curso</label>
+            <select name="ConcursoId">
+                <option value="">---SELECIONE---</option>
+                @foreach (var item in ViewBag.Concursos)
+                {
+                    if (item.Id == Model.ConcursoId)
+                    {
+                        <option value="@item.Id" selected>@item.Nome</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                }
+
+            </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Voltar para listagem", "Index")
+</div>

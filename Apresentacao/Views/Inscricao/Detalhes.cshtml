@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Cadastro de Concurso - Gestão de Concursos";
+}
+
+<h2>Adicionar Concurso</h2>
+
+<div class="container">
+    <div class="row">
+
+        <form method="post">
+            <div class="form">
+
+                <input type="hidden" name="id" value="Model.Id" />
+
+                <ul style="list-style-type: none;">
+                    <li>
+                        <label for="nome">Nome do Concurso:</label>
+                        <input type="text" value="Model.Nome" class="form-control" id="nome" name="nome" required />
+                    </li>
+                    <li>
+                        <label for="cpf">Descrição do Concurso:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </li>
+                    <li>
+                        <label for="email">Situação do Concurso:</label>
+                        <input type="checkbox" checked data-toggle="toggle">
+                    </li>
+                    <li>
+                        <label for="telefone">Data e hora do Concurso:</label>
+                        <input type="datetime-local" value="Model.Telefone" class="form-control" id="telefone" name="DataHoraInicio" placeholder="(__) _____-____" max-length="11" required />
+                    </li>
+                    <li>
+                        <label for="cep">Duração da prova:</label>
+                        <input type="text" value="Model.Cep" class="form-control" id="cep" name="cep" placeholder="3,5 horas" max-length="8" required />
+                    </li>
+                </ul>
+                <br>
+
+                <input type="submit" class="btn btn-primary" id="salvar" value="SALVAR">
+                <a href="~/Pessoa">Cancelar</a>
+            </div>
+        </form>
+
+    </div>    
+</div>

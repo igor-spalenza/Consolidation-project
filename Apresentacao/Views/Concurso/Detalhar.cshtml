@@ -1,0 +1,76 @@
+﻿@model CRM.Produto.Consolidacao.Dominio.Entidades.Concurso
+
+@{
+    ViewBag.Title = "Cadastro de Concurso";
+}
+
+<h2>Detalhar</h2>
+
+<div>
+    <h4>Concurso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Situacao)
+        </dt>
+
+        <dd>
+            @(Model.Situacao == true ? "Sim" : "Não")
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DataHoraInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataHoraInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IE)
+        </dd>
+
+        <dt>
+            <label for="Cursos">Cursos</label>
+        </dt>
+
+        @foreach (var curso in Model.Cursos)
+        {
+            <dd>
+                <a target="_blank" href="~/Curso/Detalhar/@curso.Id">@curso.Nome</a>
+            </dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Concurso", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a listagem de Concursos", "Index")
+</p>

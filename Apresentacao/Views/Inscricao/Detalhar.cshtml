@@ -1,0 +1,111 @@
+﻿@model CRM.Produto.Consolidacao.Dominio.Entidades.Inscricao
+
+@{
+    ViewBag.Title = "Detalhar";
+}
+
+<h2>Detalhes da Inscrição</h2>
+
+
+<div>
+    <h4>Pessoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Email)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Inscrição</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.Concurso.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Concurso.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.Concurso.IE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Concurso.IE)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.Capacidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Capacidade)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modalidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Modalidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.Concurso.DataHoraInicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Concurso.DataHoraInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+
+<p>
+    @Html.ActionLink("Voltar para a listagem de Inscrições", "Index")
+</p>

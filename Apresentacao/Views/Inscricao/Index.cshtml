@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Inscrições - Gestão de Concursos";
+}
+
+
+
+
+<div>
+    <h2>Listagem de Inscrições</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Pessoa</th>
+                <th>Curso</th>
+                <th>Modalidade</th>
+                <th>Data/Hora da Inscrição</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var inscricao in Model)
+            {
+                <tr>
+                    <td>@inscricao.Id</td>
+                    <td>@inscricao.Pessoa.Nome (Id:@inscricao.PessoaId) </td>
+                    <td>@inscricao.Curso.Nome (Id:@inscricao.PessoaId) </td>
+                    <td>@inscricao.Modalidade</td>
+                    <td>@inscricao.DataCadastro</td>
+                    <td>
+                        <a class="btn btn-light" href="/Inscricao/Detalhar/@inscricao.Id">
+                            <img src="~/Images/view.svg" style="height: 1.8rem;" title="Visualizar cadastro de Pessoa" />
+                        </a>
+
+                        <a class="btn btn-danger" onclick="DeletarInscricao(@inscricao.Id, '@inscricao.Pessoa.Nome');">
+                            <img src="~/Images/del.svg" style="height: 1.8rem;" title="Excluir cadastro de Pessoa" />
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+    </table>
+
+</div>
